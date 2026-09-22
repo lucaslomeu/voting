@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: voting-api
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:voting}
+    username: ${DB_USERNAME:voting}
+    password: ${DB_PASSWORD:voting}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  jackson:
+    time-zone: UTC
+
+server:
+  port: ${SERVER_PORT:8080}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    doc-expansion: list
+  api-docs:
+    path: /v3/api-docs
